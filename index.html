@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvaro Quiroz Carrera | Ingeniero Industrial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #0a1128;
+            --accent-color: #0077ff;
+            --light-color: #f0f7ff;
+            --high-contrast-accent: #4dabf7;
+            --gradient-1: linear-gradient(135deg, #0056b3, #0077ff);
+            --gradient-2: linear-gradient(135deg, #003d82, #0056b3);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --text-color: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.7; color: var(--text-color); background-color: var(--light-color); overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Merriweather', serif; color: var(--secondary-color); font-weight: 700; margin-bottom: 1rem; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img, video { max-width: 100%; height: auto; display: block; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { translateY(0px); }
+        }
+        
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+        }
+        
+        .animate-delay-1 { animation-delay: 0.2s; }
+        .animate-delay-2 { animation-delay: 0.4s; }
+        .animate-delay-3 { animation-delay: 0.6s; }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 14px 32px; 
+            background: var(--gradient-1); 
+            color: white; 
+            border-radius: 50px; 
+            font-weight: 600; 
+            transition: var(--transition); 
+            border: none; 
+            cursor: pointer; 
+            box-shadow: 0 8px 15px rgba(0, 119, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--gradient-2);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .btn:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 25px rgba(0, 119, 255, 0.4);
+            color: white;
+        }
+        
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid var(--primary-color); 
+            color: var(--primary-color); 
+        }
+        
+        .btn-outline:hover { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        
+        section { 
+            padding: 100px 0; 
+            position: relative; 
+            z-index: 1; 
+            overflow: hidden; 
+        }
+        
+        .section-bg { 
+            color: white; 
+        }
+        
+        .section-bg::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+            z-index: -2; 
+            filter: brightness(0.7);
+        }
+        
+        .section-bg::after { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(135deg, rgba(10, 17, 40, 0.92), rgba(0, 86, 179, 0.85)); 
+            z-index: -1; 
+        }
+
+        #personal-experience::before { background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1771'); }
+        #professional-experience::before { background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=1974'); }
+        #projects::before { background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1770'); }
+        #education::before { background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1770'); }
+        #skills::before { background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726a?auto=format&fit=crop&q=80&w=1770'); }
+        
+        .section-bg .section-title, .section-bg h3, .section-bg h4, .section-bg p, .section-bg span, .section-bg li, .section-bg strong { 
+            color: var(--light-color) !important; 
+        }
+        
+        .section-bg .section-title::after { 
+            background-color: var(--high-contrast-accent); 
+        }
+        
+        .section-bg .experience-role, .section-bg .award-card h4, .section-bg .skills-title, .section-bg .education-title { 
+            color: var(--high-contrast-accent) !important; 
+        }
+        
+        .section-title { 
+            font-size: 3.2rem; 
+            text-align: center; 
+            margin-bottom: 4rem; 
+            position: relative; 
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .section-title::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -15px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 120px; 
+            height: 5px; 
+            background: var(--gradient-1); 
+            border-radius: 3px; 
+        }
+
+        header { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(15px); 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+            padding: 15px 0; 
+            transition: var(--transition); 
+        }
+        
+        header.scrolled { 
+            padding: 10px 0; 
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            color: var(--secondary-color); 
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .logo span { 
+            color: var(--primary-color); 
+        }
+        
+        .nav-menu { 
+            display: flex; 
+        }
+        
+        .nav-link { 
+            margin: 0 18px; 
+            font-weight: 600; 
+            position: relative; 
+            font-size: 1.1rem;
+        }
+        
+        .nav-link::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -5px; 
+            left: 0; 
+            width: 0; 
+            height: 3px; 
+            background: var(--gradient-1); 
+            transition: var(--transition); 
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after { 
+            width: 100%; 
+        }
+        
+        .nav-link.active { 
+            color: var(--primary-color); 
+        }
+        
+        .hamburger { 
+            display: none; 
+            cursor: pointer; 
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .hero { 
+            padding-top: 150px; 
+            padding-bottom: 120px; 
+            background: linear-gradient(135deg, #f0f7ff 0%, #e1f0ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(0, 119, 255, 0.1);
+            z-index: 0;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(0, 86, 179, 0.08);
+            z-index: 0;
+        }
+        
+        .hero-content { 
+            display: flex; 
+            align-items: stretch; /* MODIFICADO: Alinear elementos para que ocupen toda la altura */
+            justify-content: space-between; 
+            gap: 50px; 
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text { 
+            flex: 1.2; /* Dar un poco más de espacio al texto */
+        }
+        
+        .hero-title { 
+            font-size: 4.2rem; 
+            line-height: 1.2; 
+            margin-bottom: 1.8rem; 
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle { 
+            font-size: 2rem; 
+            color: var(--primary-color); 
+            margin-bottom: 1.8rem; 
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .hero-description { 
+            font-size: 1.15rem; 
+            margin-bottom: 2.8rem; 
+            max-width: 600px; 
+            text-align: justify; 
+            line-height: 1.8;
+        }
+        
+        .hero-buttons { 
+            display: flex; 
+            gap: 20px; 
+            flex-wrap: wrap; 
+        }
+        
+        .hero-image { 
+            flex: 1; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .profile-img { 
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+            border-radius: 20px; /* MODIFICADO: De círculo a rectángulo redondeado */
+            box-shadow: 0 15px 35px rgba(0, 86, 179, 0.3);
+            transition: var(--transition);
+        }
+        
+        .profile-img:hover { 
+            transform: scale(1.03); /* Ajuste de hover */
+            box-shadow: 0 20px 40px rgba(0, 86, 179, 0.4);
+        }
+        
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(15px); 
+            border-radius: 20px; 
+            padding: 35px; 
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); 
+            transition: var(--transition); 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            z-index: -1;
+        }
+        
+        .glass-card:hover { 
+            transform: translateY(-10px); 
+            background: rgba(255, 255, 255, 0.15); 
+            box-shadow: 0 15px 35px rgba(0, 119, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .glass-card ul { 
+            list-style-type: '✓'; 
+            padding-left: 25px; 
+        }
+        
+        .glass-card li { 
+            margin-bottom: 12px; 
+            text-align: left; 
+            font-size: 1.05rem;
+        }
+        
+        .glass-card p { 
+            text-align: left; 
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .experience-role { 
+            font-weight: 700; 
+            font-size: 1.7rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            margin-bottom: 15px;
+        }
+        
+        .experience-role .icon { 
+            font-size: 1.8rem; 
+            color: var(--high-contrast-accent);
+        }
+        
+        .experience-date { 
+            font-weight: 500; 
+            margin-bottom: 20px; 
+            display: block; 
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        #personal-experience .glass-card { 
+            margin-bottom: 40px; 
+        }
+        
+        #professional-experience .glass-card { 
+            margin: 0 auto 40px auto; 
+            max-width: 900px; 
+        }
+        
+        .projects-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+            gap: 35px; 
+        }
+        
+        .project-achievement { 
+            background: rgba(0, 119, 255, 0.25); 
+            padding: 18px; 
+            border-radius: 12px; 
+            border-left: 4px solid var(--high-contrast-accent); 
+            margin-top: 20px;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        #education .education-item { 
+            margin: 0 auto; 
+            max-width: 900px; 
+            text-align: center; 
+        }
+        
+        #education .awards-title { 
+            margin-top: 70px; 
+            margin-bottom: 35px; 
+            text-align: center; 
+            font-size: 2.4rem; 
+        }
+        
+        .awards-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 30px; 
+        }
+        
+        .award-card { 
+            text-align: center; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-1);
+        }
+        
+        .award-icon { 
+            font-size: 3rem; 
+            margin-bottom: 20px; 
+            color: var(--high-contrast-accent);
+        }
+        
+        .skills-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 35px; 
+        }
+        
+        .skills-list { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 15px; 
+            justify-content: center; 
+        }
+        
+        .skill-item { 
+            background: rgba(0, 119, 255, 0.2); 
+            color: white !important; 
+            padding: 10px 20px; 
+            border-radius: 30px; 
+            font-weight: 600; 
+            transition: var(--transition); 
+            border: 1px solid var(--high-contrast-accent);
+            font-size: 1rem;
+        }
+        
+        .skill-item:hover { 
+            background: var(--primary-color); 
+            transform: translateY(-5px) scale(1.05); 
+            box-shadow: 0 8px 15px rgba(0, 119, 255, 0.3);
+        }
+
+        footer#contact { 
+            padding: 90px 0 40px; 
+            background: var(--secondary-color); 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer#contact::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(77, 171, 247, 0.1);
+            z-index: 0;
+        }
+        
+        footer#contact::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(77, 171, 247, 0.08);
+            z-index: 0;
+        }
+        
+        .contact-container { 
+            text-align: center; 
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-container h3, .contact-container .contact-detail { 
+            color: white; 
+        }
+        
+        .contact-detail { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 20px; 
+            font-size: 1.2rem; 
+        }
+        
+        .contact-icon { 
+            font-size: 1.5rem; 
+            color: var(--high-contrast-accent); 
+            margin-right: 15px; 
+        }
+        
+        .social-links { 
+            display: flex; 
+            gap: 25px; 
+            margin-top: 35px; 
+            justify-content: center; 
+        }
+        
+        .social-link { 
+            width: 55px; 
+            height: 55px; 
+            border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: var(--transition); 
+            font-size: 1.4rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-link:hover { 
+            background: var(--primary-color); 
+            transform: translateY(-8px); 
+            box-shadow: 0 10px 20px rgba(0, 119, 255, 0.3);
+        }
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 60px; 
+            margin-top: 60px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.2); 
+            font-size: 1rem; 
+            opacity: 0.8; 
+            color: white; 
+        }
+        
+        .chatbot-btn { 
+            position: fixed; 
+            bottom: 35px; 
+            right: 35px; 
+            width: 70px; 
+            height: 70px; 
+            background: var(--gradient-1); 
+            color: white; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 2rem; 
+            cursor: pointer; 
+            z-index: 1000; 
+            transition: var(--transition); 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .chatbot-btn:hover { 
+            transform: scale(1.15); 
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .chatbot-modal { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.6); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 2000; 
+            visibility: hidden; 
+            opacity: 0; 
+            transition: visibility 0s 0.3s, opacity 0.3s ease; 
+        }
+        
+        .chatbot-modal.active { 
+            visibility: visible; 
+            opacity: 1; 
+            transition: opacity 0.3s ease; 
+        }
+        
+        .chatbot-phone { 
+            width: 400px; 
+            height: 90vh; 
+            max-height: 750px; 
+            background: #f0f7ff; 
+            border-radius: 40px; 
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6); 
+            display: flex; 
+            flex-direction: column; 
+            transform: translateY(50px); 
+            transition: transform 0.3s ease, opacity 0.3s ease; 
+            opacity: 0; 
+            overflow: hidden; 
+            border: 8px solid #333;
+        }
+        
+        .chatbot-modal.active .chatbot-phone { 
+            transform: translateY(0); 
+            opacity: 1; 
+        }
+        
+        .chatbot-header { 
+            background: var(--gradient-1); 
+            color: white; 
+            padding: 18px 25px; 
+            border-top-left-radius: 32px; 
+            border-top-right-radius: 32px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .chatbot-header h3 { 
+            color: white; 
+            margin: 0; 
+            font-size: 1.2rem; 
+            font-family: 'Orbitron', sans-serif;
+        } 
+        
+        .chatbot-header h3 .bot-name { 
+            font-weight: 700; 
+        }
+        
+        .chatbot-close-btn { 
+            font-size: 1.6rem; 
+            cursor: pointer; 
+            color: white; 
+            transition: var(--transition);
+        }
+        
+        .chatbot-close-btn:hover {
+            transform: rotate(90deg);
+        }
+        
+        .chatbot-screen { 
+            background: #fff; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+            padding: 15px; 
+            overflow: hidden; 
+        }
+        
+        .chatbot-messages { 
+            flex-grow: 1; 
+            overflow-y: auto; 
+            scroll-behavior: smooth; 
+            padding: 15px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+        }
+        
+        .chatbot-message { 
+            padding: 12px 18px; 
+            border-radius: 25px; 
+            max-width: 85%; 
+            line-height: 1.5; 
+            font-size: 1rem; 
+        }
+        
+        .bot-message { 
+            background: #e1f0ff; 
+            color: var(--secondary-color); 
+            align-self: flex-start; 
+            border-bottom-left-radius: 5px; 
+        }
+        
+        .user-message { 
+            background: var(--gradient-1); 
+            color: white; 
+            align-self: flex-end; 
+            border-bottom-right-radius: 5px; 
+        }
+        
+        .chatbot-suggestions { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            padding: 15px 15px 0 15px; 
+        }
+        
+        .suggestion-btn { 
+            background: transparent; 
+            border: 1px solid var(--primary-color); 
+            color: var(--primary-color); 
+            padding: 10px 15px; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-size: 0.9rem; 
+            transition: var(--transition); 
+            font-weight: 500;
+        }
+        
+        .suggestion-btn:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-3px);
+        }
+        
+        .chatbot-input-container { 
+            display: flex; 
+            padding: 15px; 
+            border-top: 1px solid #eee; 
+        }
+        
+        #chatbot-input { 
+            flex-grow: 1; 
+            border: none; 
+            padding: 12px; 
+            border-radius: 25px; 
+            background: #f0f7ff; 
+            outline: none; 
+            font-size: 1rem;
+        }
+        
+        #chatbot-send-btn { 
+            background: none; 
+            border: none; 
+            color: var(--primary-color); 
+            font-size: 1.6rem; 
+            cursor: pointer; 
+            padding: 0 12px; 
+            transition: var(--transition);
+        }
+        
+        #chatbot-send-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        .bot-message h4 { 
+            font-size: 1.1rem; 
+            color: var(--primary-color); 
+            margin-bottom: 10px; 
+        }
+        
+        .bot-message p, .bot-message ul { 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        .bot-message ul { 
+            list-style-type: disc; 
+            padding-left: 20px; 
+            margin-top: 10px; 
+        }
+        
+        .bot-message .inline-suggestions { 
+            margin-top: 15px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+        }
+        
+        .bot-message .inline-suggestion-btn { 
+            background: white; 
+            border: 1px solid var(--accent-color); 
+            color: var(--accent-color); 
+            padding: 10px 15px; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            text-align: left; 
+            font-family: 'Poppins', sans-serif; 
+            font-weight: 500; 
+            transition: var(--transition); 
+        }
+        
+        .bot-message .inline-suggestion-btn:hover { 
+            background: var(--accent-color); 
+            color: white; 
+            transform: translateY(-3px);
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            background: transparent;
+            border: 2px solid var(--high-contrast-accent);
+            color: var(--high-contrast-accent);
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 18px;
+            transition: var(--transition);
+        }
+        
+        .download-btn:hover {
+            background: var(--high-contrast-accent);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(77, 171, 247, 0.3);
+        }
+        
+        .download-btn-pending {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.3);
+            cursor: not-allowed;
+        }
+        
+        .download-btn-pending:hover {
+            transform: none;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .initiative-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .initiative-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+        }
+        
+        .initiative-media video {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-image-container {
+            margin-top: 25px;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            position: relative;
+            background-color: #f0f7ff;
+        }
+        
+        .gallery-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.7));
+            z-index: 1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-image-container:hover::before {
+            opacity: 1;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .gallery-image-container:hover .gallery-img {
+            transform: scale(1.15);
+        }
+
+        @media (max-width: 992px) {
+            .hero-content { flex-direction: column-reverse; text-align: center; }
+            .hero-buttons { justify-content: center; } 
+            .hero-description { text-align: center; margin-left: auto; margin-right: auto; }
+            .hero-title { font-size: 3.2rem; } 
+            .hero-subtitle { font-size: 1.7rem; }
+            .profile-img { 
+                width: 100%; 
+                max-width: 400px;
+                height: 450px; 
+                margin: 0 auto 30px auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container { padding: 0 20px; }
+            .nav-menu { position: fixed; top: 0; right: -100%; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px); width: 100%; height: 100vh; flex-direction: column; align-items: center; justify-content: center; transition: right 0.4s ease; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); padding-top: 0; }
+            .nav-menu.active { right: 0; } 
+            .nav-menu li { width: 80%; }
+            .nav-link { display: block; width: 100%; margin: 18px 0; font-size: 1.9rem; font-weight: 600; color: var(--secondary-color); text-align: center; border-radius: 12px; padding: 18px 0; transition: background-color 0.3s ease, transform 0.3s ease; }
+            .nav-link:hover { background: var(--primary-color); color: white; transform: scale(1.05); }
+            .nav-link::after { content: none; }
+            .hamburger { display: block; z-index: 1001; } 
+            .hamburger .fa-bars { display: block; }
+            .hamburger .fa-times { display: none; }
+            .hamburger.active .fa-bars { display: none; }
+            .hamburger.active .fa-times { display: block; }
+
+            .section-title { font-size: 2.4rem; } 
+            .hero-title { font-size: 2.7rem; }
+            .projects-grid, .awards-grid { grid-template-columns: 1fr; }
+            
+            .chatbot-phone {
+                width: 95%;
+                max-width: 380px;
+                height: 85vh;
+                border-radius: 30px;
+                border-width: 6px;
+            }
+
+            .initiative-content { text-align: center; }
+        }
+    
+        @media (min-width: 768px) {
+            #personal-experience .glass-card {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center; /* MODIFICADO: Centrar verticalmente el video y el texto */
+                gap: 40px;
+            }
+            .initiative-content {
+                flex: 1;
+                order: 1;
+                align-items: flex-start;
+            }
+            .initiative-media {
+                flex: 0 0 450px;
+                order: 2;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#home" class="logo">Alvaro <span>Quiroz</span></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Inicio</a></li>
+                    <li><a href="#personal-experience" class="nav-link">Iniciativas</a></li>
+                    <li><a href="#professional-experience" class="nav-link">Experiencia</a></li>
+                    <li><a href="#projects" class="nav-link">Proyectos</a></li>
+                    <li><a href="#education" class="nav-link">Educación</a></li>
+                    <li><a href="#skills" class="nav-link">Habilidades</a></li>
+                    <li><a href="#contact" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i><i class="fas fa-times"></i></div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text animate-fade-in">
+                <h1 class="hero-title">Alvaro Quiroz Carrera</h1>
+                <h2 class="hero-subtitle">Ingeniero Industrial y de Sistemas en Formación</h2>
+                <p class="hero-description animate-fade-in animate-delay-2">Estudiante de último año de Ingeniería Industrial y de Sistemas con formación en gestión de procesos, seguridad industrial (SSOMA) y mejora continua mediante metodologías como 5S, Pareto e Ishikawa. Experiencia en análisis de datos con Power BI, SQL y Python para optimizar operaciones y apoyar la toma de decisiones en entornos industriales. Seleccionado en el Aspire Leaders Program 2025, programa internacional impulsado por profesores de Harvard. Apasionado por la innovación, el alto rendimiento y el desarrollo de soluciones sostenibles en la industria minera y de procesos.</p>
+                <div class="hero-buttons animate-fade-in animate-delay-3">
+                    <a href="#projects" class="btn">Ver Proyectos</a>
+                    <a href="alvaro_quiroz-carrea.pdf" download class="btn btn-outline">Descargar CV</a>
+                    <a href="#contact" class="btn">Contacto</a>
+                </div>
+            </div>
+            <div class="hero-image animate-fade-in animate-delay-2">
+                <img src="alvaro.jpg" alt="Alvaro Quiroz Carrera" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="personal-experience" class="section-bg">
+        <div class="container">
+            <h2 class="section-title animate-fade-in">Iniciativas Personales</h2>
+            <div class="glass-card animate-fade-in animate-delay-1">
+                <div class="initiative-content">
+                    <h3 class="experience-role"><i class="fas fa-chalkboard-teacher icon"></i> Yachay Mikuy – Nutrición Inteligente</h3>
+                    <span class="experience-date">2023 - 2025</span>
+                    <p>Co-fundador de una plataforma digital con IA y gamificación para combatir la anemia infantil. Logros principales:</p>
+                    <ul>
+                        <li><b>Hult Prize Perú:</b> Finalista (Top 4 local).</li>
+                        <li><b>Babson Global Student Challenge:</b> Top 10 mundial (+900 equipos).</li>
+                        <li><b>Jump Chile 2025:</b> Seleccionado entre los 100 mejores equipos de LATAM.</li>
+                        <li><b>Universidad de Piura (UDEP):</b> 3er lugar entre 54 equipos en Bootcamp de innovación.</li>
+                    </ul>
+                </div>
+                <div class="initiative-media">
+                    <video src="yachay.mp4" controls autoplay muted loop></video>
+                </div>
+            </div>
+            <div class="glass-card animate-fade-in animate-delay-2" style="margin-top:30px;">
+                <div class="initiative-content">
+                    <h3 class="experience-role"><i class="fas fa-desktop icon"></i> Plataforma Integral Universitaria con IA</h3>
+                    <span class="experience-date">2025</span>
+                    <p>Líder de la propuesta para una plataforma que busca fortalecer la integración y competitividad de los estudiantes. Avances:</p>
+                    <ul>
+                        <li><b>Alta viabilidad y demanda:</b> Estudios de prefactibilidad muestran más del 70% de interés estudiantil.</li>
+                        <li><b>Prototipo funcional:</b> Integra módulos clave como mentorías, biblioteca digital, y el primer ChatBot académico.</li>
+                        <li><b>Impacto potencial:</b> Puede mejorar el acceso a oportunidades y reducir la intención de emigrar.</li>
+                    </ul>
+                </div>
+                <div class="initiative-media">
+                    <video src="plataforma.mp4" controls autoplay muted loop></video>
+                </div>
+            </div>
+            <div class="glass-card animate-fade-in animate-delay-3" style="margin-top:30px;">
+                <div class="initiative-content">
+                    <h3 class="experience-role"><i class="fas fa-user-graduate icon"></i> Tutor de Ciencias (Clases Particulares)</h3>
+                    <span class="experience-date">2020 - 2024</span>
+                    <p>Proyecto personal de enseñanza donde apliqué análisis de datos para diseñar procesos de aprendizaje adaptativos. Logros:</p>
+                    <ul>
+                        <li>Escalé el programa de 3 a 37 estudiantes rápidamente.</li>
+                        <li>Implementé métricas para medir y optimizar el avance académico.</li>
+                        <li>Alcancé una mejora comprobada en el rendimiento general del grupo.</li>
+                    </ul>
+                </div>
+                <div class="initiative-media">
+                    <video src="tutor.mp4" controls autoplay muted loop></video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="professional-experience" class="section-bg">
+        <div class="container">
+            <h2 class="section-title animate-fade-in">Experiencia Profesional</h2>
+            <div class="glass-card experience-item animate-fade-in animate-delay-1">
+                <h3 class="experience-role"><i class="fas fa-university icon"></i> Ayudante de Secretaría Académica | Universidad de Piura</h3>
+                <span class="experience-date">2018 - 2023</span>
+                <p>Apoyé en la gestión académica y administrativa, coordinando procesos críticos con enfoque en eficiencia y mejora continua. Logros y funciones:</p>
+                <ul>
+                    <li>Coordiné la logística de exámenes para más de 60 estudiantes, garantizando protocolos y control estricto.</li>
+                    <li>Implementé mejoras en planificación administrativa, reduciendo tiempos y elevando la precisión de registros.</li>
+                    <li>Apliqué metodologías de mejora continua e indicadores de gestión, alineando la experiencia a la ingeniería industrial.</li>
+                    <li>Contribuí a fortalecer la organización interna mediante controles estandarizados y reportes de gestión.</li>
+                </ul>
+            </div>
+            <div class="glass-card experience-item animate-fade-in animate-delay-2">
+                <h3 class="experience-role"><i class="fas fa-warehouse icon"></i> Coordinador de Almacén | Vidriería Kevin</h3>
+                <span class="experience-date">Marzo 2025 - Julio 2025</span>
+                <p>Responsable de la coordinación integral del almacén y la gestión administrativa. Logros clave:</p>
+                <ul>
+                    <li>Implementé controles de inventario que redujeron faltantes en un 15% y mejoraron la trazabilidad.</li>
+                    <li>Optimicé la preparación y despacho de pedidos en un 20%, asegurando entregas más rápidas.</li>
+                    <li>Alcancé un 98% de precisión en los pedidos, reduciendo reclamos de clientes.</li>
+                    <li>Logré una reducción del 10% en costos operativos mediante mejoras en compras y uso eficiente de recursos.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-bg">
+        <div class="container">
+            <h2 class="section-title animate-fade-in">Proyectos Académicos</h2>
+            <div class="projects-grid">
+                <div class="glass-card animate-fade-in animate-delay-1">
+                    <h3>Auditoría Energética en Mi Hogar (2024)</h3>
+                    <p>Reduje el consumo eléctrico aplicando Análisis de Pareto para identificar puntos de mayor impacto.</p>
+                    <div class="project-achievement"><strong>Logro:</strong> Implementación exitosa de medidas de eficiencia.</div>
+                </div>
+                <div class="glass-card animate-fade-in animate-delay-2">
+                    <h3>Mejora de Calidad en Enel (2023)</h3>
+                    <p>Utilicé gráficos de control y Pareto para reducir las fallas en la distribución de energía.</p>
+                    <div class="project-achievement"><strong>Logro:</strong> Reducción significativa de fallas en distribución.</div>
+                </div>
+                <div class="glass-card animate-fade-in animate-delay-3">
+                    <h3>Productividad en CIFARMA (2022)</h3>
+                    <p>Identifiqué cuellos de botella y diseñé un plan para mejorar la productividad operativa.</p>
+                    <div class="project-achievement"><strong>Logro:</strong> Plan de mejora de productividad implementado.</div>
+                </div>
+                <div class="glass-card animate-fade-in animate-delay-1">
+                    <h3>Simulación de Cadena de Suministro (2024)</h3>
+                    <p>Logré una reducción del 18% en costos logísticos y una mejora del 22% en rentabilidad.</p>
+                    <div class="project-achievement"><strong>Logro:</strong> Optimización de cadena de suministro multiregión.</div>
+                </div>
+                <div class="glass-card animate-fade-in animate-delay-2">
+                    <h3>Seguridad y Salud en el Trabajo (SST) (2024)</h3>
+                    <p>Diseñé un PETS que redujo el riesgo de accidentes en un 70% y protocolos que minimizaron interrupciones.</p>
+                    <div class="project-achievement"><strong>Logro:</strong> Mejora significativa en seguridad laboral.</div>
+                </div>
+                <div class="glass-card animate-fade-in animate-delay-3">
+                    <h3>Optimización de Transporte Urbano (2023)</h3>
+                    <p>Realicé un estudio de tiempos de espera para proponer mejoras en el servicio "El Metropolitano".</p>
+                    <div class="project-achievement"><strong>Logro:</strong> Propuestas de mejora para sistema de transporte.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section-bg">
+        <div class="container">
+            <h2 class="section-title animate-fade-in">Educación y Logros</h2>
+            <div class="glass-card education-item animate-fade-in animate-delay-1">
+                <h3 class="education-title">Ingeniería Industrial y de Sistemas | Universidad de Piura</h3>
+                <span class="education-date">2020 - Egreso previsto: diciembre 2025</span>
+                <p>Becario Beca 18 – Convocatoria 2020: Obtuve una beca completa.</p>
+            </div>
+            <h3 class="awards-title animate-fade-in animate-delay-2">Premios y Reconocimientos</h3>
+            <div class="awards-grid">
+                <div class="glass-card award-card animate-fade-in animate-delay-1">
+                    <div class="award-icon"><i class="fas fa-trophy"></i></div>
+                    <h4>Hult Prize UNMSM</h4>
+                    <p><b>Logro:</b> Finalista (Top 4 local).<br><b>Competencias:</b> Diseño de negocios de alto impacto social y pitching ante expertos.</p>
+                    <a href="hult.jpg" download class="download-btn">Descargar</a>
+                </div>
+                <div class="glass-card award-card animate-fade-in animate-delay-2">
+                    <div class="award-icon"><i class="fas fa-medal"></i></div>
+                    <h4>Babson Global Student Challenge</h4>
+                    <p><b>Logro:</b> Top 10 mundial (+900 equipos).<br><b>Competencias:</b> Visión de negocio global y validación internacional de proyectos.</p>
+                    <a href="babson.jpg" download class="download-btn">Descargar</a>
+                </div>
+                <div class="glass-card award-card animate-fade-in animate-delay-3">
+                    <div class="award-icon"><i class="fas fa-award"></i></div>
+                    <h4>Jump Chile 2025</h4>
+                    <p><b>Logro:</b> Top 100 de Latinoamérica.<br><b>Competencias:</b> Aplicación de Lean Startup y validación de mercado.</p>
+                    <button class="download-btn download-btn-pending" onclick="alert('Descarga de certificado en proceso.')">En Proceso</button>
+                </div>
+                <div class="glass-card award-card animate-fade-in animate-delay-1">
+                    <div class="award-icon"><i class="fas fa-star"></i></div>
+                    <h4>Bootcamp UDEP</h4>
+                    <p><b>Logro:</b> 3er lugar entre 54 equipos.<br><b>Competencias:</b> Ideación y prototipado rápido (Design Thinking).</p>
+                    <a href="bootcamp.jpg" download class="download-btn">Descargar</a>
+                </div>
+                <div class="glass-card award-card animate-fade-in animate-delay-2">
+                    <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Aspire Leaders Program</h4>
+                    <p><b>Logro:</b> Selección en programa con metodología de la U. de Harvard.<br><b>Competencias:</b> Pensamiento crítico y liderazgo.</p>
+                    <a href="aspire.jpg" download class="download-btn">Descargar</a>
+                </div>
+                <div class="glass-card award-card animate-fade-in animate-delay-3">
+                    <div class="award-icon"><i class="fas fa-certificate"></i></div>
+                    <h4>Santander X Explorer</h4>
+                    <p><b>Logro:</b> "Participante Destacado".<br><b>Competencias:</b> Transformación de ideas en modelos de negocio viables.</p>
+                    <button class="download-btn download-btn-pending" onclick="alert('Descarga de certificado en proceso.')">En Proceso</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-bg">
+        <div class="container">
+            <h2 class="section-title animate-fade-in">Habilidades Clave</h2>
+            <div class="skills-container">
+                <div class="glass-card animate-fade-in animate-delay-1">
+                    <h3 class="skills-title">Habilidades Blandas</h3>
+                    <div class="skills-list">
+                        <span class="skill-item">Liderazgo</span><span class="skill-item">Comunicación efectiva</span><span class="skill-item">Pensamiento sistémico</span><span class="skill-item">Adaptabilidad</span><span class="skill-item">Resiliencia</span><span class="skill-item">Aprendizaje rápido</span><span class="skill-item">Trabajo en equipo</span>
+                    </div>
+                </div>
+                <div class="glass-card animate-fade-in animate-delay-2">
+                    <h3 class="skills-title">Habilidades Técnicas</h3>
+                    <div class="skills-list">
+                        <span class="skill-item">Power BI</span><span class="skill-item">SQL Server</span><span class="skill-item">Python</span><span class="skill-item">SAP</span><span class="skill-item">Power Automate</span><span class="skill-item">Excel Avanzado</span><span class="skill-item">HTML/CSS/JS</span><span class="skill-item">Ciberseguridad</span>
+                    </div>
+                </div>
+                <div class="glass-card animate-fade-in animate-delay-3">
+                    <h3 class="skills-title">Herramientas de Calidad y Diseño</h3>
+                    <div class="skills-list">
+                        <span class="skill-item">Gráficos de Control</span><span class="skill-item">Diagrama de Pareto</span><span class="skill-item">Ishikawa</span><span class="skill-item">Metodología 5S</span><span class="skill-item">Minitab</span><span class="skill-item">Visio</span><span class="skill-item">Canva</span><span class="skill-item">Illustrator</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer id="contact">
+        <div class="container">
+            <h2 class="section-title" style="color:white;">Contacto</h2>
+            <div class="contact-container">
+                <h3>Información de Contacto</h3>
+                <div class="contact-detail"><a href="https://wa.me/51918072862" target="_blank"><i class="fas fa-phone contact-icon"></i><span>+51 918072862</span></a></div>
+                <div class="contact-detail"><i class="fas fa-envelope contact-icon"></i><span>alvaro.quiroz@alum.udep.edu.pe</span></div>
+                <div class="contact-detail"><a href="https://www.linkedin.com/in/alvaro-quiroz-carrera/" target="_blank"><i class="fab fa-linkedin contact-icon"></i><span>alvaro-quiroz-carrera</span></a></div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/alvaro-quiroz-carrera/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright"><p>&copy; 2025 Alvaro Quiroz Carrera. Todos los derechos reservados.</p></div>
+        </div>
+    </footer>
+
+    <div class="chatbot-btn" id="chatbot-btn"><i class="fas fa-robot"></i></div>
+    <div class="chatbot-modal" id="chatbot-modal">
+        <div class="chatbot-phone">
+            <div class="chatbot-header">
+                <h3><span class="bot-name">RedAlvaro</span> Asistente</h3>
+                <span class="chatbot-close-btn" id="chatbot-close-btn"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="chatbot-screen">
+                <div class="chatbot-messages" id="chatbot-messages"></div>
+                <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
+                <div class="chatbot-input-container">
+                    <input type="text" id="chatbot-input" placeholder="Pregúntame algo...">
+                    <button id="chatbot-send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // El JavaScript no ha sido modificado y permanece igual.
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sticky Header
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+                else { header.classList.remove('scrolled'); }
+            });
+
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+
+            // Active Nav Link on Scroll
+            const sections = document.querySelectorAll('section[id]');
+            window.addEventListener('scroll', () => {
+                let scrollY = window.pageYOffset;
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    let sectionId = current.getAttribute('id');
+                    let navLink = document.querySelector('.nav-menu a[href*=' + sectionId + ']');
+                    if(navLink) {
+                        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                            navLink.classList.add('active');
+                        } else {
+                            navLink.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            // --- CHATBOT LOGIC ---
+            const chatbotBtn = document.getElementById('chatbot-btn');
+            const chatbotModal = document.getElementById('chatbot-modal');
+            const chatbotCloseBtn = document.getElementById('chatbot-close-btn');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+            const chatbotInput = document.getElementById('chatbot-input');
+            const chatbotSendBtn = document.getElementById('chatbot-send-btn');
+            const chatbotSuggestionsContainer = document.getElementById('chatbot-suggestions');
+
+            const knowledgeBase = {
+                'greetings': {
+                    keywords: ['hola', 'buenos', 'buenas', 'que tal', 'hey'],
+                    response: `¡Hola! Soy <span class="bot-name">RedAlvaro</span>, el asistente virtual de Alvaro Quiroz. ¿En qué puedo ayudarte?`
+                },
+                'home': {
+                    keywords: ['quien es', 'alvaro', 'quiroz', 'carrera', 'resumen', 'perfil', 'presentacion', 'sobre ti', 'informacion'],
+                    response: `<h4>Alvaro Quiroz Carrera</h4><p>Es un estudiante de último año de <b>Ingeniería Industrial y de Sistemas</b>. Se especializa en gestión de procesos, seguridad (SSOMA) y mejora continua (5S, Pareto). Usa herramientas como Power BI, SQL y Python para optimizar operaciones. Ha sido seleccionado en el <b>Aspire Leaders Program</b>, impulsado por profesores de Harvard.</p>`
+                },
+                'personalExperience': {
+                    keywords: ['iniciativas', 'personales', 'yachay mikuy', 'plataforma', 'tutor'],
+                    response: `<h4>Iniciativas Personales</h4><p>Alvaro ha liderado 3 iniciativas clave:</p><ul><li><b>Yachay Mikuy:</b> Plataforma con IA para combatir la anemia infantil, premiada internacionalmente.</li><li><b>Plataforma Universitaria:</b> Prototipo con IA para mejorar la integración estudiantil.</li><li><b>Tutor de Ciencias:</b> Programa de tutorías que creció de 3 a 37 estudiantes usando análisis de datos.</li></ul>`
+                },
+                'professionalExperience': {
+                    keywords: ['experiencia', 'profesional', 'trabajo', 'puestos', 'laboral', 'vidrieria', 'secretaria'],
+                    response: `<h4>Experiencia Profesional</h4><p>Su experiencia incluye:</p><ul><li><b>Coordinador de Almacén:</b> Redujo faltantes en 15% y optimizó despachos en 20%.</li><li><b>Ayudante de Secretaría Académica:</b> Coordinó la logística de exámenes para más de 60 estudiantes y aplicó metodologías de mejora continua.</li></ul>`
+                },
+                'projects': {
+                    keywords: ['proyectos', 'academicos', 'auditoria', 'cifarma', 'enel', 'sst'],
+                    response: `<h4>Proyectos Académicos</h4><p>Ha desarrollado 6 proyectos importantes, incluyendo:</p><ul><li><b>Simulación de Cadena de Suministro:</b> Redujo costos logísticos en 18%.</li><li><b>Seguridad y Salud (SST):</b> Diseñó un PETS que redujo el riesgo de accidentes en 70%.</li><li><b>Mejora de Calidad en Enel:</b> Usó Pareto para reducir fallas de distribución.</li></ul>`
+                },
+                'education': {
+                    keywords: ['educacion', 'universidad', 'estudios', 'logros', 'premios', 'reconocimientos', 'harvard', 'babson', 'jump chile'],
+                    response: `<h4>Educación y Logros</h4><p>Estudia <b>Ingeniería Industrial</b> en la UDEP (Beca 18). Sus reconocimientos más importantes son:</p><ul><li><b>Aspire Leaders Program</b> (metodología Harvard).</li><li>Finalista en <b>Hult Prize</b>.</li><li>Top 10 mundial en <b>Babson Global Student Challenge</b>.</li><li>Top 100 LATAM en <b>Jump Chile</b>.</li></ul>`
+                },
+                'skills': {
+                    keywords: ['habilidades', 'skills', 'conocimientos', 'herramientas', 'software', 'power bi', 'sql', 'python', 'sap', '5s'],
+                    response: `<h4>Habilidades Clave</h4><p>Domina un conjunto de herramientas técnicas y de gestión:</p><ul><li><b>Análisis de Datos:</b> Power BI, SQL Server, Python.</li><li><b>Software Empresarial:</b> SAP, Power Automate.</li><li><b>Calidad y Procesos:</b> 5S, Diagrama de Pareto, Ishikawa.</li><li><b>Habilidades Blandas:</b> Liderazgo, pensamiento sistémico y aprendizaje rápido.</li></ul>`
+                },
+                'contact': {
+                    keywords: ['contacto', 'email', 'correo', 'telefono', 'linkedin', 'llamar'],
+                    response: `<h4>Información de Contacto</h4><p>Puedes contactar a Alvaro por:</p><ul><li><b>Email:</b> alvaro.quiroz@alum.udep.edu.pe</li><li><b>Teléfono:</b> +51 918072862</li><li><b>LinkedIn:</b> alvaro-quiroz-carrera</li></ul><p>¡Estará encantado de conversar!</p>`
+                },
+                'cv': {
+                    keywords: ['cv', 'curriculum', 'hoja de vida', 'descargar cv', 'resume'],
+                    response: `<h4>Descargar CV</h4><p>Puedes descargar el currículum vitae actualizado de Alvaro en formato PDF:</p><div class="inline-suggestions"><a href="alvaro_quiroz-carrea.pdf" download class="inline-suggestion-btn">Descargar CV ahora</a></div>`
+                },
+                'meeting': {
+                    keywords: ['reunion', 'cita', 'agendar', 'calendly', 'programar'],
+                    response: `<h4>Agendar una Reunión</h4><p>Si deseas agendar una reunión con Alvaro, puedes hacerlo a través de su calendario:</p><div class="inline-suggestions"><a href="https://calendly.com/alvaro-quiroz" target="_blank" class="inline-suggestion-btn">Agendar reunión</a></div><p>o contactarlo directamente al +51 918072862.</p>`
+                },
+                'projectsDetail': {
+                    keywords: ['proyectos destacados', 'proyectos importantes', 'mejores proyectos'],
+                    response: `<h4>Proyectos Destacados</h4><p>Algunos de los proyectos más importantes de Alvaro son:</p><ul><li><b>Simulación de Cadena de Suministro:</b> Reducción del 18% en costos logísticos.</li><li><b>Seguridad y Salud en el Trabajo:</b> Diseño de PETS que redujo accidentes en 70%.</li><li><b>Auditoría Energética:</b> Implementación de medidas que redujeron el consumo eléctrico.</li></ul><div class="inline-suggestions"><button class="inline-suggestion-btn" data-topic="projects">Ver todos los proyectos</button></div>`
+                },
+                'skillsDetail': {
+                    keywords: ['habilidades tecnicas', 'competencias', 'conocimientos especificos'],
+                    response: `<h4>Habilidades Técnicas Detalladas</h4><p>Alvaro tiene experiencia en:</p><ul><li><b>Análisis de Datos:</b> Power BI, SQL Server, Python, Excel Avanzado.</li><li><b>Automatización:</b> Power Automate, Python scripting.</li><li><b>Gestión de Procesos:</b> SAP, metodologías 5S, Lean.</li><li><b>Diseño y Presentación:</b> Canva, Illustrator, Visio.</li></ul><div class="inline-suggestions"><button class="inline-suggestion-btn" data-topic="skills">Ver todas las habilidades</button></div>`
+                },
+                'experienceDetail': {
+                    keywords: ['experiencia detallada', 'trabajos', 'puestos', 'historial laboral'],
+                    response: `<h4>Experiencia Profesional Detallada</h4><p>La experiencia laboral de Alvaro incluye:</p><ul><li><b>Coordinador de Almacén (Vidriería Kevin):</b><ul><li>Implementó controles de inventario reduciendo faltantes en 15%</li><li>Optimizó preparación de pedidos en 20%</li><li>Alcanzó 98% de precisión en pedidos</li></ul></li><li><b>Ayudante de Secretaría Académica (UDEP):</b><ul><li>Coordinó logística de exámenes para 60+ estudiantes</li><li>Implementó mejoras en planificación administrativa</li><li>Aplicó metodologías de mejora continua</li></ul></li></ul><div class="inline-suggestions"><button class="inline-suggestion-btn" data-topic="professionalExperience">Ver experiencia completa</button></div>`
+                },
+                'availability': {
+                    keywords: ['disponibilidad', 'disponible', 'cuando puede', 'tiempo'],
+                    response: `<h4>Disponibilidad</h4><p>Alvaro está actualmente disponible para nuevas oportunidades laborales y proyectos. Su flexibilidad horaria le permite adaptarse a diferentes modalidades de trabajo:</p><ul><li><b>Tiempo completo</b></li><li><b>Medio tiempo</b></li><li><b>Proyectos por horas</b></li><li><b>Remoto o presencial</b></li></ul><p>Para discutir oportunidades específicas, puedes contactarlo directamente o agendar una reunión.</p>`
+                },
+                'languages': {
+                    keywords: ['idiomas', 'lenguajes', 'español', 'ingles'],
+                    response: `<h4>Idiomas</h4><p>Alvaro tiene competencia en los siguientes idiomas:</p><ul><li><b>Español:</b> Nativo</li><li><b>Inglés:</b> Intermedio-Avanzado (B2)</li></ul><p>Su nivel de inglés le permite comunicarse eficazmente en entornos profesionales internacionales.</p>`
+                }
+            };
+            
+            const sectionSuggestions = [
+                { text: '¿Quién es Alvaro?', section: 'home' }, 
+                { text: 'Iniciativas Personales', section: 'personalExperience' },
+                { text: 'Experiencia Profesional', section: 'professionalExperience' }, 
+                { text: 'Proyectos Destacados', section: 'projects' },
+                { text: 'Educación y Logros', section: 'education' }, 
+                { text: 'Habilidades Técnicas', section: 'skills' },
+                { text: 'Formas de Contacto', section: 'contact' },
+                { text: 'Descargar CV', section: 'cv' },
+                { text: 'Agendar Reunión', section: 'meeting' },
+                { text: 'Disponibilidad', section: 'availability' },
+            ];
+            let suggestionIndex = 0;
+
+            const resetChatbot = () => {
+                chatbotMessages.innerHTML = '';
+                addBotMessage(knowledgeBase.greetings.response);
+                updateSuggestions();
+            };
+
+            const openChatbot = () => {
+                chatbotModal.classList.add('active');
+                if (chatbotMessages.children.length === 0) {
+                    resetChatbot();
+                }
+            };
+
+            const closeChatbot = () => { 
+                chatbotModal.classList.remove('active'); 
+                resetChatbot();
+            };
+
+            const addBotMessage = (message) => {
+                const el = document.createElement('div');
+                el.className = 'chatbot-message bot-message';
+                el.innerHTML = message;
+                chatbotMessages.appendChild(el);
+                scrollToBottom();
+            };
+            const addUserMessage = (message) => {
+                const el = document.createElement('div');
+                el.className = 'chatbot-message user-message';
+                el.textContent = message;
+                chatbotMessages.appendChild(el);
+                scrollToBottom();
+            };
+            const scrollToBottom = () => { chatbotMessages.scrollTop = chatbotMessages.scrollHeight; };
+            const getBotResponse = (userInput) => {
+                const input = userInput.toLowerCase().replace(/[^\w\s]/gi, '');
+                for (const key in knowledgeBase) {
+                    if (knowledgeBase[key].keywords.some(kw => input.includes(kw))) {
+                        return knowledgeBase[key].response;
+                    }
+                }
+                return `<h4>No he encontrado una respuesta exacta.</h4><p>Prueba preguntando por alguna de estas áreas:</p>
+                <div class="inline-suggestions">
+                    <button class="inline-suggestion-btn" data-topic="professionalExperience">Su experiencia profesional</button>
+                    <button class="inline-suggestion-btn" data-topic="projects">Sus proyectos más importantes</button>
+                    <button class="inline-suggestion-btn" data-topic="skills">Sus habilidades técnicas</button>
+                    <button class="inline-suggestion-btn" data-topic="cv">Descargar su CV</button>
+                    <button class="inline-suggestion-btn" data-topic="meeting">Agendar una reunión</button>
+                </div>`;
+            };
+            const handleUserInput = () => {
+                const userInput = chatbotInput.value.trim();
+                if (userInput === '') return;
+                addUserMessage(userInput);
+                chatbotInput.value = '';
+                setTimeout(() => {
+                    addBotMessage(getBotResponse(userInput));
+                    updateSuggestions();
+                }, 500);
+            };
+            const handleSuggestionClick = (topic) => {
+                const representativeText = sectionSuggestions.find(s => s.section === topic)?.text || `Saber más sobre ${topic}`;
+                addUserMessage(representativeText);
+                setTimeout(() => {
+                    addBotMessage(knowledgeBase[topic].response);
+                    updateSuggestions();
+                }, 500);
+            };
+            const updateSuggestions = () => {
+                chatbotSuggestionsContainer.innerHTML = '';
+                const suggestionsToShow = [];
+                for (let i = 0; i < 3; i++) {
+                    suggestionsToShow.push(sectionSuggestions[(suggestionIndex + i) % sectionSuggestions.length]);
+                }
+                suggestionsToShow.forEach(suggestion => {
+                    const button = document.createElement('button');
+                    button.className = 'suggestion-btn';
+                    button.textContent = suggestion.text;
+                    button.onclick = () => handleSuggestionClick(suggestion.section);
+                    chatbotSuggestionsContainer.appendChild(button);
+                });
+                suggestionIndex = (suggestionIndex + 1) % sectionSuggestions.length;
+            };
+
+            chatbotBtn.addEventListener('click', openChatbot);
+            chatbotCloseBtn.addEventListener('click', closeChatbot);
+            chatbotModal.addEventListener('click', (e) => { if (e.target === chatbotModal) closeChatbot(); });
+            chatbotSendBtn.addEventListener('click', handleUserInput);
+            chatbotInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleUserInput(); });
+            chatbotMessages.addEventListener('click', (e) => {
+                if (e.target.matches('.inline-suggestion-btn')) {
+                    if (e.target.dataset.topic) {
+                        handleSuggestionClick(e.target.dataset.topic);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
